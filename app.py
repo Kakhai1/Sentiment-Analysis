@@ -1,0 +1,24 @@
+# 1. import Flask
+from flask import Flask, request, render_template
+
+# 2. Create an app, being sure to pass __name__
+app = Flask(__name__)
+
+
+# 3. Define what to do when a user hits the index route
+@app.route("/")
+def home():
+    print("Server received request for 'Home' page...")
+    return "Welcome to my 'Home' page!"
+
+
+# 4. Define what to do when a user hits the /about route
+@app.route('/process_text', methods=['POST'])
+def process_text():
+    user_input = request.form.get('user_text')
+    # Do something with user_input, e.g., process or display it
+    return f"You entered: {user_input}"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
