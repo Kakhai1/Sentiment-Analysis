@@ -1,15 +1,18 @@
 # 1. import Flask
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
+
 
 # 2. Create an app, being sure to pass __name__
 app = Flask(__name__)
-
+CORS(app)
 
 # 3. Define what to do when a user hits the index route
-@app.route("/")
+@app.route("/", methods=["POST"])
 def home():
     print("Server received request for 'Home' page...")
-    return "Welcome to my 'Home' page!"
+    text = jsonify("Welcome to my Home page!")
+    return text
 
 
 # 4. Define what to do when a user hits the /about route
@@ -22,3 +25,4 @@ def process_text():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
