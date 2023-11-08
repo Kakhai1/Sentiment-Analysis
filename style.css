@@ -1,0 +1,114 @@
+body {
+    background:linear-gradient(to bottom, #682580, #354197);
+}
+
+
+h1 {
+    font-family: monospace; 
+    color: #fefefe;
+    font-size: 120px;
+}
+
+h2 {
+    font-family: monospace;
+    color: #fefefe;
+    font-size: 50px;
+}
+
+h3 {
+    font-family: monospace;
+    color: #fefefe;
+    font-size: 50px;
+}
+
+#textForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+#user_input1,
+#user_input2 {
+    width: 200px;
+    margin: 5px 10px 5px 0;
+}
+
+button {
+    width: 60px;
+    margin: 5px 0;
+}
+
+#outputMappingTable {
+    margin-left: 350px;
+    color: white;
+    font-family: monospace;
+    
+}
+
+#outputMappingTable table {
+    border-collapse: collapse; 
+    width: 100%; 
+}
+
+#outputMappingTable th, #outputMappingTable td {
+    border: 1px solid #757272;
+    padding: 8px; 
+    text-align: center; 
+}
+
+label[for="user_input1"],
+label[for="user_input2"] {
+    color: white;
+    font-family: monospace;
+    font-size: 20px;
+    border: 1px solid #8d8b8b;
+    padding: 10px;
+}
+
+
+#Data-heading p {
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    font-size: 50px;
+}
+
+.review-text .read-more,
+.review-text .read-less {
+    color: rgb(151, 173, 81);
+    cursor: pointer;
+}
+
+.review-text .read-less {
+    display: none;
+}
+
+#reviewsList li {
+    color: white; 
+    font-family: monospace;
+}
+
+#reviewsList table {
+    width: 800px; 
+    margin: 0 auto; 
+    border-collapse: collapse; 
+}
+
+#reviewsList th,
+#reviewsList td {
+    border: 1px solid #757272; 
+    padding: 25px; 
+    text-align: center; 
+}
+
+#barChartContainer,
+#gaugeChartContainer {
+  width: 50%; 
+  height: 200px; 
+  float: left; 
+  margin-right: 10px; 
+}
