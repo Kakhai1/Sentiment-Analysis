@@ -1,16 +1,11 @@
-
 from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
-
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import requests
 from bs4 import BeautifulSoup
 import re
 import pandas as pd
-
-
-
 
 app = Flask(__name__)
 CORS(app)

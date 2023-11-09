@@ -2,8 +2,11 @@ function sendTextToAPI() {
     var userInput1 = document.getElementById("user_input1").value;
     var userInput2 = document.getElementById("user_input2").value;
     var apiUrl = 'http://127.0.0.1:5000/';  
-
-    
+    document.getElementById("loadingContainer").style.display = "flex"
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.style.display = "none";
+    document.getElementById("resultContainer").style.display = "none";
+    document.getElementById("reviewsContainerHeading").style.display = "none";
     var request = new Request(apiUrl, {
         method: 'POST', 
         body: JSON.stringify({text1: userInput1, text2: userInput2 }), 
@@ -18,16 +21,23 @@ function sendTextToAPI() {
             return response.json();
         })
         .then(function (data) {
-            
+            if (data.dataframe.length === 0) {
+                errorMessage.style.display = "block";
+                document.getElementById("resultContainer").style.display = "none";
+            } else 
             createHighchartsBarChart(data.dataframe, 'barChartContainer');
             createHighchartsGauge(data.dataframe, 'gaugeChartContainer');
             updateReviews(data.dataframe);
             console.log(data.dataframe);
-
-            document.getElementById("urlDisplay").style.display = "none";
+            document.getElementById("loadingContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+            document.getElementById("reviewsContainerHeading").style.display = "block";
         })
         .catch(function(error) {
             console.error('Error:', error);
+            loadingCircle.style.display = "none";
+            resultContainer.innerHTML = "An error occurred.";
+            resultContainer.style.display = "block";
     });
        
 };
@@ -46,39 +56,38 @@ function createHighchartsBarChart(data, containerId) {
         chart: {
             type: 'bar',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
-            width: 600
         },
         title: {
-            text: 'Total star count based on reviews',
+            text: 'Sentiment rating count',
             style: {
-                color: 'white',
+                color: 'black',
             },
         },
         xAxis: {
             categories: labels.map(label => `${label}`),
             title: {
-                text: 'Star rating',
+                text: 'Sentiment',
                 style: {
-                    color: 'white',
+                    color: 'black',
                 },
             },
             labels: {
                 style: {
-                    color: 'white', 
+                    color: 'black', 
                 },
             },
         },
         yAxis: {
-            categories: labels.map(label => `${label}`),
+            min: 0,
             title: {
-                text: 'Star rating2',
+                text: 'Count',
                 style: {
-                    color: 'white',
+                    color: 'black',
                 },
             },
             labels: {
                 style: {
-                    color: 'white', 
+                    color: 'black',
                 },
             },
         },
@@ -98,14 +107,14 @@ function createHighchartsGauge(data, containerId) {
     Highcharts.chart(containerId, {
         chart: {
             type: 'gauge',
-            plotBackgroundColor: 'rgba(0, 0, 0, 0.1)',
+            plotBackgroundColor: null,
             plotBackgroundImage: null,
             plotBorderWidth: 0,
             plotShadow: false,
-            width:600
+            height: '80%'
         },
         title: {
-            text: 'Average Star Rating'
+            text: 'Average Sentiment Rating'
         },
         pane: {
             startAngle: -90,
@@ -207,38 +216,38 @@ function updateReviews(data) {
 
     reviewsList.appendChild(table);
 }
-function createOutputMappingTable() {
-    const outputMapping = {
-        1: "Terrible",
-        2: "Bad",
-        3: "Neutral",
-        4: "Good",
-        5: "Amazing"
-    };
+// function createOutputMappingTable() {
+//     const outputMapping = {
+//         1: "Terrible",
+//         2: "Bad",
+//         3: "Neutral",
+//         4: "Good",
+//         5: "Amazing"
+//     };
 
-    const tableContainer = document.getElementById("outputMappingTable");
-    const table = document.createElement("table");
-
-    
-    const headerRow = table.insertRow(0);
-    const headerCell1 = headerRow.insertCell(0);
-    const headerCell2 = headerRow.insertCell(1);
-    headerCell1.textContent = "Star Rating";
-    headerCell2.textContent = "Defintion of the Rating";
+//     const tableContainer = document.getElementById("outputMappingTable");
+//     const table = document.createElement("table");
 
     
-    let rowIndex = 1;
-    for (const key in outputMapping) {
-        const row = table.insertRow(rowIndex);
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        cell1.textContent = key;
-        cell2.textContent = outputMapping[key];
-        rowIndex++;
-    }
+//     const headerRow = table.insertRow(0);
+//     const headerCell1 = headerRow.insertCell(0);
+//     const headerCell2 = headerRow.insertCell(1);
+//     headerCell1.textContent = "Star Rating";
+//     headerCell2.textContent = "Defintion of the Rating";
 
-    tableContainer.appendChild(table);
-}
+    
+//     let rowIndex = 1;
+//     for (const key in outputMapping) {
+//         const row = table.insertRow(rowIndex);
+//         const cell1 = row.insertCell(0);
+//         const cell2 = row.insertCell(1);
+//         cell1.textContent = key;
+//         cell2.textContent = outputMapping[key];
+//         rowIndex++;
+//     }
+
+//     tableContainer.appendChild(table);
+// }
 
 
-document.addEventListener("DOMContentLoaded", createOutputMappingTable);
+// document.addEventListener("DOMContentLoaded", createOutputMappingTable);
