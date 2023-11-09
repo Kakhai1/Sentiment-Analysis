@@ -1,0 +1,175 @@
+body {
+    background: rgb(212, 212, 212);
+    margin: 2%;
+}
+
+#project-info {
+    float: left;
+    width: 10%;
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 0%;
+    color: black;
+}
+#sub-blurb{
+    margin-left: 5%;
+    margin-right: 80%;
+}
+#title-container {
+    margin-left: 25%;
+    text-align: center;
+    width: 60%;
+    border: 1px solid grey;
+    border-radius: 0%;
+    padding: 10px;
+}
+h1 {
+    font-family: monospace; 
+    color: black;
+    font-size: 60px;
+}
+
+h2 {
+    font-family: monospace;
+    color: black;
+    font-size: 24px;
+}
+
+h3 {
+    font-family: monospace;
+    color: black;
+    font-size: 50px;
+}
+
+#blurb{
+    width: 85%;
+    margin-left: 5%;
+}
+
+#textForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+    margin-left: 5%;
+}
+
+#user_input1,
+#user_input2 {
+    width: 200px;
+    margin: 5px 10px 5px 0;
+}
+
+button {
+    width: 60px;
+    margin: 5px 0;
+}
+
+#outputMappingTable {
+    margin-left: 60%;
+    color: black;
+    font-family: monospace;
+    
+}
+
+#outputMappingTable table {
+    border-collapse: collapse; 
+    width: 100%; 
+}
+
+#outputMappingTable th, #outputMappingTable td {
+    border: 1px solid #757272;
+    padding: 8px; 
+    text-align: center; 
+}
+
+label[for="user_input1"],
+label[for="user_input2"] {
+    color: black;
+    font-family: monospace;
+    font-size: 20px;
+    border: 1px solid #8d8b8b;
+    padding: 10px;
+}
+
+
+#Data-heading p {
+    color: black;
+    font-family: monospace;
+    font-size: 50px;
+}
+
+
+ #reviewsContainer {
+    float: left;
+    width: 30%;
+    margin-right: 2%;
+}
+
+#dataframe_list {
+    float: left;
+    width: 30%;
+    margin-right: 2%;
+}
+
+#barChartContainer {
+    width: 33%; /* Each chart takes 33% of the available width */
+    height: 400px;
+    margin-right: 1%;
+    float: left;
+    margin-top: 150px;
+}
+#resultContainer{
+    display: none;
+}
+#gaugeChartContainer {
+    width: 33%; /* Each chart takes 33% of the available width */
+    height: 400px;
+    margin-right: 1%;
+    float: left;
+    margin-top: 150px;}
+
+#loadingContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent overlay */
+}
+
+.loading-circle {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #007bff; /* Adjust the color as needed */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#reviewsList th,
+#reviewsList td {
+    border-top: 1px solid #757272;
+    border-left: 1px solid #757272;  
+    padding: 20px; 
+    text-align: center; 
+    color: black !important;
+} 
+#reviewsList{
+    border-right: 1px solid #757272;  
+    border-bottom: 1px solid #757272;
+}
+#errorMessage{
+    display: none;
+}
