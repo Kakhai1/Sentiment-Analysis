@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Food Review</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+    <div id="project-info">
+        A machine learning project by Eric Tran and Khai Tran
+    </div>
+    <div id="title-container"><h1>True Sentiment Of Food Reviews</h1></div>
+    <div id="blurb"><h2>What do people really think about food reviews? We're using machine learning to find out what food reviewers really feel about the restaurants they're visiting, based on the words they're using instead of the score they gave!</h2></div>
+    <div id="sub-blurb">Please enter the Restaurant name and the Suburb name, and keep in mind that the spelling needs to be accurate!</div>
+    <br>
+<div class="input-container">
+    <form id="textForm">
+        <label for="user_input1">Restaurant Name:</label>
+        <input type="text" id="user_input1" name="user_input1" placeholder="Type name of the restaurant">
+
+        <label for="user_input2">Suburb Name:</label>
+        <input type="text" id="user_input2" name="user_input2" placeholder="Type name of the suburb">
+
+        <button type="button" onclick="sendTextToAPI()">Submit</button>
+    </form>
+
+    <div id="outputMappingTable">
+        <table>
+            <tr>
+                <td colspan="5">Sentiment</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Terrible</td>
+                <td>Bad</td>
+                <td>Neutral</td>
+                <td>Good</td>
+                <td>Amazing</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="loadingContainer">
+    <div id="loadingCircle" class="loading-circle"></div>
+</div>
+<div id="errorMessage">
+    <p>No reviews found. Please check your spelling or verify the existence of reviews.</p>
+</div>
+<div id="resultContainer">
+    <div id="Data-heading">
+        <p>Data outcome</p>
+    </div>
+
+    <div id="dataframe_list"></div>
+        <div id="reviewsContainer">
+            <div id="reviewsContainerHeading"><h3>Reviews</h3></div>
+            <ul id="reviewsList"></ul>
+        </div>
+        <div id="barChartContainer" style="height: 400px;"></div>
+        <div id="gaugeChartContainer" style="height: 400px;"></div>
+
+        
+    <script src = "API.js"></script>
+    <script src = "merged_java.js"></script>
+</div>
+</body>
+</html>
